@@ -12,6 +12,7 @@ public class FileFinderDemo {
 
     public static void main(String[] args) throws IOException {
 
+        //input path directory
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String path = bufferedReader.readLine();
 
@@ -19,8 +20,9 @@ public class FileFinderDemo {
         File file = new File(path);
         File[] files = file.listFiles();
 
-
+        System.out.println("Все файлы и поддиректории  директории " + file.getCanonicalPath() + "\n");
         fileList.outListFiles(files);
+        fileList.getListAllFilesArrayList();
 
 
 
