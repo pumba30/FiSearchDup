@@ -1,8 +1,5 @@
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Created by pumba30 on 27.11.2014.
@@ -10,24 +7,27 @@ import java.io.InputStreamReader;
 public class FileFinderDemo {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        System.out.println("Введите путь к директории: ");
+        InputUserData userData = new InputUserData();
+        userData.getUserInput();
+        String pathDirectory = userData.getInputLine();
 
-        //input path directory
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String path = bufferedReader.readLine();
+        FileListAdd listAdd = new FileListAdd(pathDirectory);
 
-        FileList fileList = new FileList();
-        File file = new File(path);
-        File[] files = file.listFiles();
-
-        System.out.println("Все файлы и поддиректории  директории " + file.getCanonicalPath() + "\n");
-        fileList.outListFiles(files);
-        fileList.getListAllFilesArrayList();
+        //получаем список файлов в директории и поддиректориях
+        List<File> list = listAdd.getFileList();
 
 
 
 
 
+
+//        test output to screen
+//        List<File> list = listAdd.getFileList();
+//        for(File item : list){
+//            System.out.println(item.getName());
+//        }
 
 
     }
