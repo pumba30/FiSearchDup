@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Created by pumba30 on 27.11.2014.
+ * Программа для поиска дупликатов файлов в
+ * заданной директории и поддиректориях.
  */
 public class FileFinderDemo {
 
