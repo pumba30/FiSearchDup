@@ -8,18 +8,10 @@ import java.util.regex.Pattern;
  */
 public class DuplicateFind {
 
-    private List<File> listOriginalFilesFromOurDirectory;
-    private List<File> listOfFoundFilesDupl;
-
-    //храним в Map - файл  как ключ, значение - список ArrayList<File> найденных файлов, которые
-    //соответствуют файлу ключу
-    private HashMap<File, ArrayList<File>> foundDuplicates;
-
+    private List<File> listDuplicatesFiles;
 
     public DuplicateFind() {
-        this.listOriginalFilesFromOurDirectory = new ArrayList<File>();
-        this.listOfFoundFilesDupl = new ArrayList<File>();
-        this.foundDuplicates = new HashMap<File, ArrayList<File>>();
+        this.listDuplicatesFiles = new ArrayList<File>();
     }
 
     //находим возможные дубликаты по шаблону pattern  file.txt   - оригинал
@@ -34,18 +26,16 @@ public class DuplicateFind {
             String itemName = item.getName();
             Matcher matcher = pattern.matcher(itemName);
             if (matcher.find()) {
-                String originalFileName = matcher.group(1) + matcher.group(3);
-                //File originalFile = new File(item, originalFileName);
-
-                    listOriginalFilesFromOurDirectory.add(item);
+                listDuplicatesFiles.add(item);
             }
         }
-        return listOriginalFilesFromOurDirectory;
+        return listDuplicatesFiles;
     }
 
-    public void outOnScreenDuplicatesFiles(List<File> listOriginalFilesFromOurDirectory ) {
+    //выводим список найденных файлов на экран
+    public void outOnScreenDuplicatesFiles(List<File> listOriginalFilesFromOurDirectory) {
         System.out.println("\nНайденные копии файлов:\n");
-        for(File item : listOriginalFilesFromOurDirectory){
+        for (File item : listOriginalFilesFromOurDirectory) {
             System.out.println(item + "\n");
         }
 
