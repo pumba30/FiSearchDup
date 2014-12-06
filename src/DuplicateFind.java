@@ -1,8 +1,5 @@
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,33 +8,47 @@ import java.util.regex.Pattern;
  */
 public class DuplicateFind {
 
-    private List<File> listFilesFromOurDirectory;
+    private List<File> listOriginalFilesFromOurDirectory;
     private List<File> listOfFoundFilesDupl;
 
     //храним в Map - файл  как ключ, значение - список ArrayList<File> найденных файлов, которые
     //соответствуют файлу ключу
-    private HashMap<File, ArrayList<File>> duplicates;
+    private HashMap<File, ArrayList<File>> foundDuplicates;
 
 
-    public DuplicateFind(List<File> listFilesFromOurDirector) {
-        this.listFilesFromOurDirectory = listFilesFromOurDirectory;
+    public DuplicateFind() {
+        this.listOriginalFilesFromOurDirectory = new ArrayList<File>();
         this.listOfFoundFilesDupl = new ArrayList<File>();
-        this.duplicates = new HashMap<File, ArrayList<File>>();
+        this.foundDuplicates = new HashMap<File, ArrayList<File>>();
     }
 
-    //находим возможные дубликаты по шаблону (по совпадению имени,
-    // по совпадению имени с номером в скобках)
-    public void toFindPossibleDuplicates(List<File> listFilesFromOurDirectory) {
+    //находим возможные дубликаты по шаблону pattern  file.txt   - оригинал
+    //file (1).txt -  дубликат
+    public List<File> toFindPossibleDuplicates(List<File> listFilesFromOurDirectory) {
+
+        //используем для задания шаблона регулярные выражения
+        Pattern pattern = Pattern.compile("^(.+)(\\s\\(\\d+\\))(.*)$");
 
         //бежим по листу и сравниваем с шаблоном
         for (File item : listFilesFromOurDirectory) {
-            //используем для задания шаблона регулярные выражения
-            Pattern pattern = Pattern.compile("^(.+)(\\s\\(\\d+\\))(.*)");
-            Matcher matcher = pattern.matcher(item.getName());
+            String itemName = item.getName();
+            Matcher matcher = pattern.matcher(itemName);
+            if (matcher.find()) {
+                String originalFileName = matcher.group(1) + matcher.group(3);
+                //File originalFile = new File(item, originalFileName);
 
+                    listOriginalFilesFromOurDirectory.add(item);
+            }
+        }
+        return listOriginalFilesFromOurDirectory;
+    }
+
+    public void outOnScreenDuplicatesFiles(List<File> listOriginalFilesFromOurDirectory ) {
+        System.out.println("\nНайденные копии файлов:\n");
+        for(File item : listOriginalFilesFromOurDirectory){
+            System.out.println(item + "\n");
         }
 
     }
-
 
 }

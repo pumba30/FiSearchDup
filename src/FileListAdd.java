@@ -1,7 +1,7 @@
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by pumba30 on 29.11.2014.
@@ -9,29 +9,32 @@ import java.util.List;
 public class FileListAdd {
     private File file;
     private List<File> fileList;
-    private String pathToDirectory;
     private File[] files;
+    private String pathToDirectoty;
 
-    public FileListAdd(String pathToDirectory) {
-        this.pathToDirectory = pathToDirectory;
+    public FileListAdd() {
         fileList = new ArrayList<File>();
-        file = new File(pathToDirectory);
-        files = file.listFiles();
     }
 
-
-    public List<File> getFileList() {
+    public List<File> getListFiles(String pathToDirectoty) {
+        file = new File(pathToDirectoty);
+        files = file.listFiles(); //получили массив списка файлов заданной директории
         for (File item : files) {
-            if (item.isFile()) {
+            if (!item.isDirectory()) {
                 fileList.add(item);
             } else {
-                File file1 = new File(item.getPath());
-                files = file1.listFiles();
-                getFileList();
+                getListFiles(item.getPath());
             }
         }
         return fileList;
     }
 
+    public String getPathToDirectoty() {
+        return pathToDirectoty;
+    }
 
+    public void setPathToDirectory(String pathToDirectoty) {
+        //TODO реализовать проверку pathToString
+        this.pathToDirectoty = pathToDirectoty;
+    }
 }
