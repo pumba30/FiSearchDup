@@ -24,7 +24,7 @@ public class FileFinderDemo {
             //метод для поиска дупликатов
         } else if (inputLine == "2") {
             //метод для поиска по совпадении имени
-        }else return;
+        } else return;
 
         System.out.println("Введите путь к директории: ");
         inputLine = bufferedReader.readLine();
