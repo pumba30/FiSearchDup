@@ -13,6 +13,10 @@ public class SaveToFile {
     //Путь, где создаем файл
     private String pathToSave = "C:/ourlist.txt";
 
+    public SaveToFile() {
+
+    }
+
     public SaveToFile(List<File> fileList) throws IOException {
         this.fileList = fileList;
         fileWriter = new FileWriter(pathToSave);
@@ -21,11 +25,16 @@ public class SaveToFile {
     //сохраняем в файл список имен файлов
     public void saveToFile() throws IOException {
         for (File item : fileList) {
-            String name = item.getName();
-            fileWriter.write(name + "\r\n");
+            fileWriter.write(item + "\r\n");
         }
         fileWriter.close();
     }
 
+    public String getPathToSave() {
+        return pathToSave;
+    }
 
+    public void setFileList(List<File> fileList) {
+        this.fileList = fileList;
+    }
 }
