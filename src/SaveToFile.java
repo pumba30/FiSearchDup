@@ -23,8 +23,7 @@ public class SaveToFile {
     }
 
     //сохраняем в файл список имен файлов
-    public void saveToFile() throws IOException {
-        for (File item : fileList) {
+    public void saveToFile() throws IOException {for (File item : fileList) {
             fileWriter.write(item + "\r\n");
         }
         fileWriter.close();
