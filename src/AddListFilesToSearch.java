@@ -45,7 +45,5 @@ public class AddListFilesToSearch {
         this.pathToDirectory = pathToDirectory;
     }
 
-    public List<File> getListFileFromDirectory() {
-        return listFileFromDirectory;
-    }
+
 }
