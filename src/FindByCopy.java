@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by pumba30 on 12.12.2014.
+ * Created by pumba30
  */
 public class FindByCopy extends SearchDuplicatesFiles {
     //шаблон, по которому ищем копию
