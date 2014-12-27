@@ -2,7 +2,9 @@ import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by pumba30 on 25.12.2014.
@@ -22,7 +24,13 @@ public class FindDuplicateFileDemo {
         System.out.println("Возможные дубликаты:\n");
         listToScreen(possibleDuplFiles);
 
+        System.out.println("\nВыделенные из списка дубликатов файлы дубликатов без повторения:");
+        HashMap<String, File> fileHashMap = searchDuplicatesFiles.getOriginFiles(possibleDuplFiles);
+        for (Map.Entry entry : fileHashMap.entrySet()) {
+            File file = (File) entry.getValue();
 
+            System.out.println(file);
+        }
 
 
     }
