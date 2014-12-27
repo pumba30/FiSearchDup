@@ -29,7 +29,7 @@ public class FindDuplicateFileDemo {
 
     public static void listToScreen(List<File> list) {
         for (File item : list) {
-            System.out.println(item.getName());
+            System.out.println(item);
         }
     }
 }
