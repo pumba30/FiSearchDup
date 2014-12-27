@@ -17,6 +17,8 @@ public class FindDuplicateFileDemo {
 
 
 
+
+
         System.out.println("Файлы найденные в директории");
         for (File item : listFoundFiles) {
             System.out.println(item);
