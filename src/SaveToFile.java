@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.List;
+        import java.util.List;
 
 /**
  * Created by pumba30 on 06.12.2014.
@@ -24,8 +24,8 @@ public class SaveToFile {
 
     //сохраняем в файл список имен файлов
     public void saveToFile() throws IOException {for (File item : fileList) {
-            fileWriter.write(item + "\r\n");
-        }
+        fileWriter.write(item + "\r\n");
+    }
         fileWriter.close();
     }
 

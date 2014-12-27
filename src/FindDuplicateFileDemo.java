@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pumba30 on 25.12.2014.
@@ -14,21 +15,21 @@ public class FindDuplicateFileDemo {
         ArrayList<File> listFoundFiles = searchDuplicatesFiles.getFilesInDirectory();
 
 
+        System.out.println("Файлы найденные в директории:\n");
+        listToScreen(listFoundFiles);
+
+        ArrayList<File> possibleDuplFiles = searchDuplicatesFiles.getPossibleDuplicatesFiles(listFoundFiles);
+        System.out.println("Возможные дубликаты:\n");
+        listToScreen(possibleDuplFiles);
 
 
 
 
+    }
 
-        System.out.println("Файлы найденные в директории");
-        for (File item : listFoundFiles) {
-            System.out.println(item);
-
+    public static void listToScreen(List<File> list) {
+        for (File item : list) {
+            System.out.println(item.getName());
         }
-
-
-
-
-
-
     }
 }
