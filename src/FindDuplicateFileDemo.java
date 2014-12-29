@@ -29,9 +29,10 @@ public class FindDuplicateFileDemo {
         for (Map.Entry entry : fileHashMap.entrySet()) {
             File file = (File) entry.getValue();
 
-            System.out.println(file);
+            System.out.println(file.getName());
         }
 
+       // searchDuplicatesFiles.removeFiles(fileHashMap);
 
     }
 
